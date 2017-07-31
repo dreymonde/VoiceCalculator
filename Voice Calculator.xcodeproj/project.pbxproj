@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7C3DCCA61F2F531B00C096FF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCA51F2F531B00C096FF /* Colors.swift */; };
 		7C3DCCA81F2F556600C096FF /* VoiceSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */; };
+		7C3DCCAB1F2F66C900C096FF /* SpeechRecognitionSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCAA1F2F66C900C096FF /* SpeechRecognitionSession.swift */; };
+		7C3DCCAD1F2F672500C096FF /* SpeechRecognitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCAC1F2F672500C096FF /* SpeechRecognitionEngine.swift */; };
 		7CC3B9A91F2E1AC100409BDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */; };
 		7CC3B9AE1F2E1AC100409BDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AC1F2E1AC100409BDE /* Main.storyboard */; };
 		7CC3B9B01F2E1AC100409BDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		7C3DCCA51F2F531B00C096FF /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceSynthesizer.swift; sourceTree = "<group>"; };
+		7C3DCCAA1F2F66C900C096FF /* SpeechRecognitionSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionSession.swift; sourceTree = "<group>"; };
+		7C3DCCAC1F2F672500C096FF /* SpeechRecognitionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionEngine.swift; sourceTree = "<group>"; };
 		7CC3B9A51F2E1AC100409BDE /* Voice Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voice Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CC3B9AD1F2E1AC100409BDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C3DCCA91F2F66B600C096FF /* Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				7CC3B9BA1F2E1ADA00409BDE /* SpeechRecognition.swift */,
+				7C3DCCAA1F2F66C900C096FF /* SpeechRecognitionSession.swift */,
+				7C3DCCAC1F2F672500C096FF /* SpeechRecognitionEngine.swift */,
+			);
+			name = Recognition;
+			sourceTree = "<group>";
+		};
 		7CC3B99C1F2E1AC100409BDE = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +82,9 @@
 		7CC3B9A71F2E1AC100409BDE /* Voice Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7C3DCCA91F2F66B600C096FF /* Recognition */,
 				7CC3B9BC1F2E331000409BDE /* Evaluate.swift */,
 				7CC3B9BD1F2E331000409BDE /* Parsing.swift */,
-				7CC3B9BA1F2E1ADA00409BDE /* SpeechRecognition.swift */,
 				7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */,
 				7CC3B9AC1F2E1AC100409BDE /* Main.storyboard */,
 				7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */,
@@ -158,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3DCCAB1F2F66C900C096FF /* SpeechRecognitionSession.swift in Sources */,
 				7CC3B9BE1F2E331000409BDE /* Evaluate.swift in Sources */,
 				7C3DCCA61F2F531B00C096FF /* Colors.swift in Sources */,
 				7C3DCCA81F2F556600C096FF /* VoiceSynthesizer.swift in Sources */,
@@ -165,6 +180,7 @@
 				7CC3B9C11F2F2EFE00409BDE /* VoiceCalculation.swift in Sources */,
 				7CC3B9C51F2F38D400409BDE /* VoiceCalculationViewController.swift in Sources */,
 				7CC3B9BB1F2E1ADA00409BDE /* SpeechRecognition.swift in Sources */,
+				7C3DCCAD1F2F672500C096FF /* SpeechRecognitionEngine.swift in Sources */,
 				7CC3B9C31F2F32C800409BDE /* ThreadSafe.swift in Sources */,
 				7CC3B9A91F2E1AC100409BDE /* AppDelegate.swift in Sources */,
 			);
