@@ -19,7 +19,7 @@ extension Expression {
 
 extension BasicArithmetic {
     
-    public static var parser: ExpressionTokenParser {
+    internal static var parser: ExpressionTokenParser {
         return ExpressionTokenParser(elementOfTag: { (element, tag) -> Expression.Token? in
             switch element {
             case "-", "minus", "subtracting":
@@ -53,8 +53,8 @@ extension NumberFormatter {
         nf.numberStyle = .decimal
         return nf
     }()
-
-    public static let expressionTokenParser: ExpressionTokenParser = ExpressionTokenParser { (element, tag) -> Expression.Token? in
+    
+    internal static let expressionTokenParser: ExpressionTokenParser = ExpressionTokenParser { (element, tag) -> Expression.Token? in
         if let decimal = NumberFormatter.decimal.number(from: element) as? Double {
             return .number(decimal)
         }
@@ -77,6 +77,9 @@ public struct ExpressionTokenParser {
     public func parse(element: String, of tag: String) -> Expression.Token? {
         return _parse(element, tag)
     }
+    
+    public static let numbers = NumberFormatter.expressionTokenParser
+    public static let basicArithmetic = BasicArithmetic.parser
     
     public static let always0 = ExpressionTokenParser(elementOfTag: { _ in .number(0) })
     
