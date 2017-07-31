@@ -68,7 +68,7 @@ extension NumberFormatter {
 
 public struct ExpressionTokenParser {
     
-    let _parse: (String, String) -> Expression.Token?
+    private let _parse: (String, String) -> Expression.Token?
     
     public init(elementOfTag: @escaping (String, String) -> Expression.Token?) {
         self._parse = elementOfTag
@@ -94,7 +94,7 @@ public struct ExpressionTokenParser {
 
 public struct ExpressionTokensProcessor {
     
-    let _process: ([Expression.Token]) -> [Expression.Token]
+    private let _process: ([Expression.Token]) -> [Expression.Token]
     
     public init(process: @escaping ([Expression.Token]) -> [Expression.Token]) {
         self._process = process
