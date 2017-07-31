@@ -7,21 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C3DCCA61F2F531B00C096FF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCA51F2F531B00C096FF /* Colors.swift */; };
+		7C3DCCA81F2F556600C096FF /* VoiceSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */; };
 		7CC3B9A91F2E1AC100409BDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */; };
-		7CC3B9AB1F2E1AC100409BDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AA1F2E1AC100409BDE /* ViewController.swift */; };
 		7CC3B9AE1F2E1AC100409BDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AC1F2E1AC100409BDE /* Main.storyboard */; };
 		7CC3B9B01F2E1AC100409BDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */; };
 		7CC3B9B31F2E1AC100409BDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9B11F2E1AC100409BDE /* LaunchScreen.storyboard */; };
+		7CC3B9BB1F2E1ADA00409BDE /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9BA1F2E1ADA00409BDE /* SpeechRecognition.swift */; };
+		7CC3B9BE1F2E331000409BDE /* Evaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9BC1F2E331000409BDE /* Evaluate.swift */; };
+		7CC3B9BF1F2E331000409BDE /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9BD1F2E331000409BDE /* Parsing.swift */; };
+		7CC3B9C11F2F2EFE00409BDE /* VoiceCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9C01F2F2EFE00409BDE /* VoiceCalculation.swift */; };
+		7CC3B9C31F2F32C800409BDE /* ThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9C21F2F32C800409BDE /* ThreadSafe.swift */; };
+		7CC3B9C51F2F38D400409BDE /* VoiceCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9C41F2F38D400409BDE /* VoiceCalculationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C3DCCA51F2F531B00C096FF /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceSynthesizer.swift; sourceTree = "<group>"; };
 		7CC3B9A51F2E1AC100409BDE /* Voice Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voice Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CC3B9AA1F2E1AC100409BDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CC3B9AD1F2E1AC100409BDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CC3B9B21F2E1AC100409BDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CC3B9B41F2E1AC100409BDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CC3B9BA1F2E1ADA00409BDE /* SpeechRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
+		7CC3B9BC1F2E331000409BDE /* Evaluate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluate.swift; sourceTree = "<group>"; };
+		7CC3B9BD1F2E331000409BDE /* Parsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
+		7CC3B9C01F2F2EFE00409BDE /* VoiceCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceCalculation.swift; sourceTree = "<group>"; };
+		7CC3B9C21F2F32C800409BDE /* ThreadSafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadSafe.swift; sourceTree = "<group>"; };
+		7CC3B9C41F2F38D400409BDE /* VoiceCalculationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceCalculationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +68,19 @@
 		7CC3B9A71F2E1AC100409BDE /* Voice Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7CC3B9BC1F2E331000409BDE /* Evaluate.swift */,
+				7CC3B9BD1F2E331000409BDE /* Parsing.swift */,
+				7CC3B9BA1F2E1ADA00409BDE /* SpeechRecognition.swift */,
 				7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */,
-				7CC3B9AA1F2E1AC100409BDE /* ViewController.swift */,
 				7CC3B9AC1F2E1AC100409BDE /* Main.storyboard */,
 				7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */,
 				7CC3B9B11F2E1AC100409BDE /* LaunchScreen.storyboard */,
 				7CC3B9B41F2E1AC100409BDE /* Info.plist */,
+				7CC3B9C01F2F2EFE00409BDE /* VoiceCalculation.swift */,
+				7CC3B9C21F2F32C800409BDE /* ThreadSafe.swift */,
+				7CC3B9C41F2F38D400409BDE /* VoiceCalculationViewController.swift */,
+				7C3DCCA51F2F531B00C096FF /* Colors.swift */,
+				7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */,
 			);
 			path = "Voice Calculator";
 			sourceTree = "<group>";
@@ -137,7 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CC3B9AB1F2E1AC100409BDE /* ViewController.swift in Sources */,
+				7CC3B9BE1F2E331000409BDE /* Evaluate.swift in Sources */,
+				7C3DCCA61F2F531B00C096FF /* Colors.swift in Sources */,
+				7C3DCCA81F2F556600C096FF /* VoiceSynthesizer.swift in Sources */,
+				7CC3B9BF1F2E331000409BDE /* Parsing.swift in Sources */,
+				7CC3B9C11F2F2EFE00409BDE /* VoiceCalculation.swift in Sources */,
+				7CC3B9C51F2F38D400409BDE /* VoiceCalculationViewController.swift in Sources */,
+				7CC3B9BB1F2E1ADA00409BDE /* SpeechRecognition.swift in Sources */,
+				7CC3B9C31F2F32C800409BDE /* ThreadSafe.swift in Sources */,
 				7CC3B9A91F2E1AC100409BDE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +330,7 @@
 				7CC3B9B91F2E1AC100409BDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
