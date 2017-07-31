@@ -13,10 +13,14 @@ final class VoiceSynthesizer {
     
     let session = AVAudioSession.sharedInstance()
     
-    init() { }
+    init(speechSynthesizer: AVSpeechSynthesizer = VoiceSynthesizer.default(),
+         voice: AVSpeechSynthesisVoice = VoiceSynthesizer.default()) {
+        self.synthes = speechSynthesizer
+        self.voice = voice
+    }
     
-    let synthes = AVSpeechSynthesizer()
-    let voice = AVSpeechSynthesisVoice(language: "en-US")!
+    let synthes: AVSpeechSynthesizer
+    let voice: AVSpeechSynthesisVoice
     
     func synthesize(_ text: String) {
         do {
@@ -25,6 +29,18 @@ final class VoiceSynthesizer {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = voice
         synthes.speak(utterance)
+    }
+    
+}
+
+extension VoiceSynthesizer {
+    
+    static func `default`() -> AVSpeechSynthesizer {
+        return AVSpeechSynthesizer()
+    }
+    
+    static func `default`() -> AVSpeechSynthesisVoice {
+        return AVSpeechSynthesisVoice(language: "en-US")!
     }
     
 }
