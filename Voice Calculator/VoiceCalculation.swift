@@ -111,6 +111,7 @@ protocol VoiceCalculationDelegate : class {
     func voiceCalculation(_ voiceCalculation: VoiceCalculation, didRecognize expression: String)
     func voiceCalculation(_ voiceCalculation: VoiceCalculation, didEvaluateWithResult result: String)
     func voiceCalculation(_ voiceCalculation: VoiceCalculation, didFailWith error: Error)
+    
 }
 
 extension VoiceCalculation : SFSpeechRecognizerDelegate {

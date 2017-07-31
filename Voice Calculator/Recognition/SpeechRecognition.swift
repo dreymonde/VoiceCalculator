@@ -12,7 +12,6 @@ import Speech
 final class SpeechRecognition<Engine : SpeechRecognitionEngine> {
     
     let engine: Engine
-    
     let authorization: Authorization
     
     init(engine: Engine, authorization: Authorization = Authorization.application.mainThread()) {
