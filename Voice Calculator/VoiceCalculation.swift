@@ -76,22 +76,30 @@ final class VoiceCalculation : NSObject {
         evaluationQueue.async {
             do {
                 let expression = try self.makeExpression(string)
-                let fullString = expression.rightmostNode.fullString()
-                DispatchQueue.main.async {
-                    self.delegate?.voiceCalculation(self, didRecognize: fullString)
-                }
+                self.didRecognize(expression)
                 let result = expression.evaluate()
-                guard let resultString = self.formatter.string(from: result as NSNumber) else {
-                    throw Error.invalidNumber(result)
-                }
-                DispatchQueue.main.async {
-                    self.delegate?.voiceCalculation(self, didEvaluateWithResult: resultString)
-                }
+                try self.didEvaluate(result: result)
             } catch {
                 DispatchQueue.main.async {
                     self.delegate?.voiceCalculation(self, didFailWith: error)
                 }
             }
+        }
+    }
+    
+    private func didRecognize(_ expression: Expression) {
+        let string = expression.rightmostNode.fullString()
+        DispatchQueue.main.async {
+            self.delegate?.voiceCalculation(self, didRecognize: string)
+        }
+    }
+    
+    private func didEvaluate(result: Double) throws {
+        guard let resultString = self.formatter.string(from: result as NSNumber) else {
+            throw Error.invalidNumber(result)
+        }
+        DispatchQueue.main.async {
+            self.delegate?.voiceCalculation(self, didEvaluateWithResult: resultString)
         }
     }
     
