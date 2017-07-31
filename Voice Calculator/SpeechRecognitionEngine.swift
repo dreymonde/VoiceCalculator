@@ -9,7 +9,40 @@ protocol SpeechRecognitionEngine {
     
 }
 
-extension SFSpeechRecognizer : SpeechRecognitionEngine {
+final class LiveSpeechEngine : SpeechRecognitionEngine {
+    
+    typealias Session = LiveSpeechRecognitionSession
+    
+    init(recognizer: SFSpeechRecognizer = LiveSpeechEngine.default(),
+         audioEngine: AVAudioEngine = LiveSpeechEngine.default() ) {
+        self.recognizer = recognizer
+        self.audioEngine = audioEngine
+    }
+    
+    let recognizer: SFSpeechRecognizer
+    let audioEngine: AVAudioEngine
+    
+    func start() throws -> LiveSpeechRecognitionSession {
+        guard recognizer.isAvailable else {
+            throw Error.recognizerIsNotAvailable
+        }
+        let newSession = try Session(recognizer: recognizer,
+                                     audioSession: .sharedInstance(),
+                                     audioEngine: audioEngine)
+        return newSession
+    }
+    
+}
+
+extension LiveSpeechEngine {
+    
+    static func `default`() -> SFSpeechRecognizer {
+        return SFSpeechRecognizer(locale: .en_US)!
+    }
+    
+    static func `default`() -> AVAudioEngine {
+        return AVAudioEngine()
+    }
     
     enum Error : Swift.Error, LocalizedError {
         case recognizerIsNotAvailable
@@ -20,17 +53,6 @@ extension SFSpeechRecognizer : SpeechRecognitionEngine {
                 return "Not available"
             }
         }
-    }
-    
-    typealias Session = SFSpeechRecognitionTaskRecognitionSession
-    
-    func start() throws -> Session {
-        guard self.isAvailable else {
-            throw Error.recognizerIsNotAvailable
-        }
-        let newSession = try Session(recognizer: self,
-                                     audioSession: .sharedInstance())
-        return newSession
     }
     
 }

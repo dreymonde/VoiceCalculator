@@ -14,7 +14,7 @@ protocol SpeechRecognitionSession {
     
 }
 
-final class SFSpeechRecognitionTaskRecognitionSession : SpeechRecognitionSession {
+final class LiveSpeechRecognitionSession : SpeechRecognitionSession {
     
     enum Error : Swift.Error, LocalizedError {
         case noInputNode(AVAudioEngine)
@@ -33,13 +33,13 @@ final class SFSpeechRecognitionTaskRecognitionSession : SpeechRecognitionSession
     var handler: (SpeechRecognitionResult) -> () = { _ in }
     
     init(recognizer: SFSpeechRecognizer,
-         audioSession: AVAudioSession) throws {
+         audioSession: AVAudioSession,
+         audioEngine: AVAudioEngine) throws {
         self.audioSession = audioSession
         try audioSession.setCategory(AVAudioSessionCategoryRecord)
         try audioSession.setMode(AVAudioSessionModeMeasurement)
         try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
-        let audioEngine = AVAudioEngine.shared
         self.audioEngine = audioEngine
         self.request = SFSpeechAudioBufferRecognitionRequest()
         
@@ -82,11 +82,5 @@ final class SFSpeechRecognitionTaskRecognitionSession : SpeechRecognitionSession
     var task: SFSpeechRecognitionTask!
     let audioEngine: AVAudioEngine
     let audioSession: AVAudioSession
-    
-}
-
-extension AVAudioEngine {
-    
-    fileprivate static let shared = AVAudioEngine()
     
 }
