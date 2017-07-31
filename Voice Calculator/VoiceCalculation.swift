@@ -126,7 +126,7 @@ extension VoiceCalculation : SFSpeechRecognizerDelegate {
 extension VoiceCalculation {
     
     static func `default`() -> (String) throws -> Expression {
-        return { try Expression(from: $0.lowercased()) }
+        return { try Expression(from: $0) }
     }
     
     static func `default`() -> SpeechRecognition {

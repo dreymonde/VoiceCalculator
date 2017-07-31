@@ -144,7 +144,7 @@ public struct ExpressionTokensProcessor {
 public struct UnparsedExpression {
     
     public init(_ unparsedString: String) {
-        self.unparsedString = unparsedString
+        self.unparsedString = unparsedString.lowercased()
     }
     
     public let unparsedString: String
