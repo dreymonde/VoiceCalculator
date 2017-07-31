@@ -9,57 +9,36 @@
 import Foundation
 import Speech
 
-final class SpeechRecognition {
+final class SpeechRecognition<Engine : SpeechRecognitionEngine> {
     
-    var availabilityDelegate: SFSpeechRecognizerDelegate? {
-        get {
-            return recognizer.delegate
-        }
-        set {
-            recognizer.delegate = newValue
-        }
-    }
-    
-    var isAvailable: Bool {
-        return recognizer.isAvailable
-    }
-    
-    private let recognizer = SFSpeechRecognizer(locale: .en_US)!
-    private let audioEngine = AVAudioEngine()
+    let engine: Engine
     
     let authorization: Authorization
     
-    init(authorization: Authorization = Authorization.application.mainThread()) {
+    init(engine: Engine, authorization: Authorization = Authorization.application.mainThread()) {
+        self.engine = engine
         self.authorization = authorization
     }
     
-    var currentSession: SpeechRecognitionSession?
+    var currentSession: Engine.Session?
     
-    enum Error : Swift.Error, LocalizedError {
-        case recognizerIsNotAvailable
+    enum Error : LocalizedError {
         case alreadyRunning
-        
+
         var errorDescription: String? {
             switch self {
-            case .recognizerIsNotAvailable:
-                return "Not available"
             case .alreadyRunning:
                 return "Already running"
             }
         }
     }
     
-    func start(completion: @escaping (SpeechRecognitionSession.Result) -> ()) {
+    func start(completion: @escaping (SpeechRecognitionResult) -> ()) {
         do {
             guard currentSession == nil else {
                 throw Error.alreadyRunning
             }
-            guard recognizer.isAvailable else {
-                throw Error.recognizerIsNotAvailable
-            }
-            let newSession = try SpeechRecognitionSession(recognizer: recognizer,
-                                                          audioSession: .sharedInstance(),
-                                                          audioEngine: audioEngine)
+            var newSession = try engine.start()
             currentSession = newSession
             newSession.handler = { result in
                 self.currentSession = nil
@@ -76,6 +55,48 @@ final class SpeechRecognition {
     
 }
 
+protocol SpeechRecognitionEngine {
+    
+    associatedtype Session : SpeechRecognitionSessionProtocol
+    
+    func start() throws -> Session
+    
+}
+
+extension SFSpeechRecognizer : SpeechRecognitionEngine {
+    
+    enum Error : Swift.Error, LocalizedError {
+        case recognizerIsNotAvailable
+        
+        var errorDescription: String? {
+            switch self {
+            case .recognizerIsNotAvailable:
+                return "Not available"
+            }
+        }
+    }
+    
+    typealias Session = SpeechRecognitionSession
+    
+    func start() throws -> SpeechRecognitionSession {
+        guard self.isAvailable else {
+            throw Error.recognizerIsNotAvailable
+        }
+        let newSession = try SpeechRecognitionSession(recognizer: self,
+                                                      audioSession: .sharedInstance())
+        return newSession
+    }
+    
+}
+
+protocol SpeechRecognitionSessionProtocol {
+    
+    func stop()
+    
+    var handler: (SpeechRecognitionResult) -> () { get set }
+    
+}
+
 extension Locale {
     
     static var en_US: Locale {
@@ -84,12 +105,12 @@ extension Locale {
     
 }
 
-final class SpeechRecognitionSession : Hashable {
-    
-    enum Result {
-        case recognized(String)
-        case failure(Swift.Error)
-    }
+enum SpeechRecognitionResult {
+    case recognized(String)
+    case failure(Swift.Error)
+}
+
+final class SpeechRecognitionSession : SpeechRecognitionSessionProtocol {
     
     enum Error : Swift.Error, LocalizedError {
         case noInputNode(AVAudioEngine)
@@ -105,16 +126,16 @@ final class SpeechRecognitionSession : Hashable {
         }
     }
     
-    var handler: (Result) -> () = { _ in }
+    var handler: (SpeechRecognitionResult) -> () = { _ in }
     
     init(recognizer: SFSpeechRecognizer,
-         audioSession: AVAudioSession,
-         audioEngine: AVAudioEngine) throws {
+         audioSession: AVAudioSession) throws {
         self.audioSession = audioSession
         try audioSession.setCategory(AVAudioSessionCategoryRecord)
         try audioSession.setMode(AVAudioSessionModeMeasurement)
         try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
+        let audioEngine = AVAudioEngine.shared
         self.audioEngine = audioEngine
         self.request = SFSpeechAudioBufferRecognitionRequest()
         
@@ -136,7 +157,7 @@ final class SpeechRecognitionSession : Hashable {
                 self.handler(.failure(Error.noResult))
                 return
             }
-            let recognized = Result.recognized(result.bestTranscription.formattedString)
+            let recognized = SpeechRecognitionResult.recognized(result.bestTranscription.formattedString)
             self.handler(recognized)
         })
         
@@ -157,14 +178,6 @@ final class SpeechRecognitionSession : Hashable {
     var task: SFSpeechRecognitionTask!
     let audioEngine: AVAudioEngine
     let audioSession: AVAudioSession
-    
-    static func == (lhs: SpeechRecognitionSession, rhs: SpeechRecognitionSession) -> Bool {
-        return lhs === rhs
-    }
-    
-    var hashValue: Int {
-        return ObjectIdentifier(self).hashValue
-    }
     
 }
 
@@ -201,5 +214,11 @@ extension SpeechRecognition {
         }
         
     }
+    
+}
+
+extension AVAudioEngine {
+    
+    fileprivate static let shared = AVAudioEngine()
     
 }

@@ -22,20 +22,20 @@ final class VoiceCalculation : NSObject {
         }
     }
     
-    let speechRecognition: SpeechRecognition
+    let speechRecognition: SpeechRecognition<SFSpeechRecognizer>
     let makeExpression: (String) throws -> Expression
     let formatter: NumberFormatter
     
     weak var delegate: VoiceCalculationDelegate?
 
-    init(speechRecognition: SpeechRecognition = VoiceCalculation.default(),
+    init(speechRecognition: SpeechRecognition<SFSpeechRecognizer> = VoiceCalculation.default(),
          formatter: NumberFormatter = VoiceCalculation.default(),
          makeExpression: @escaping (String) throws -> Expression = VoiceCalculation.default()) {
         self.speechRecognition = speechRecognition
         self.makeExpression = makeExpression
         self.formatter = formatter
         super.init()
-        speechRecognition.availabilityDelegate = self
+        speechRecognition.engine.delegate = self
         main()
     }
     
@@ -43,7 +43,7 @@ final class VoiceCalculation : NSObject {
         speechRecognition.authorization.authorize { (status) in
             switch status {
             case .authorized:
-                self.availability = self.speechRecognition.isAvailable ? .available : .notAvailable
+                self.availability = self.speechRecognition.engine.isAvailable ? .available : .notAvailable
             default:
                 self.availability = .notAvailable
             }
@@ -129,8 +129,9 @@ extension VoiceCalculation {
         return { try Expression(from: $0) }
     }
     
-    static func `default`() -> SpeechRecognition {
-        return SpeechRecognition()
+    static func `default`() -> SpeechRecognition<SFSpeechRecognizer> {
+        let recognizer = SFSpeechRecognizer(locale: .en_US)!
+        return SpeechRecognition(engine: recognizer)
     }
     
     static func `default`() -> NumberFormatter {
