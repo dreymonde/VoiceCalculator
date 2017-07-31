@@ -62,7 +62,7 @@
 				7C3DCCAA1F2F66C900C096FF /* SpeechRecognitionSession.swift */,
 				7C3DCCAC1F2F672500C096FF /* SpeechRecognitionEngine.swift */,
 			);
-			name = Recognition;
+			path = Recognition;
 			sourceTree = "<group>";
 		};
 		7C3DCCAE1F2F736C00C096FF /* Evaluation */ = {
@@ -71,7 +71,7 @@
 				7CC3B9BC1F2E331000409BDE /* Evaluate.swift */,
 				7CC3B9BD1F2E331000409BDE /* Parsing.swift */,
 			);
-			name = Evaluation;
+			path = Evaluation;
 			sourceTree = "<group>";
 		};
 		7C3DCCAF1F2F737A00C096FF /* Additional */ = {
@@ -81,7 +81,7 @@
 				7CC3B9C21F2F32C800409BDE /* ThreadSafe.swift */,
 				7C3DCCB01F2F779000C096FF /* ViewExtensions.swift */,
 			);
-			name = Additional;
+			path = Additional;
 			sourceTree = "<group>";
 		};
 		7CC3B99C1F2E1AC100409BDE = {
@@ -215,6 +215,7 @@
 				7CC3B9AD1F2E1AC100409BDE /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7CC3B9B11F2E1AC100409BDE /* LaunchScreen.storyboard */ = {
@@ -223,6 +224,7 @@
 				7CC3B9B21F2E1AC100409BDE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
