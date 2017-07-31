@@ -29,17 +29,17 @@ class VoiceCalculationViewController: UIViewController {
         if isListening {
             voiceCalculation.stopRecognition()
             stateIndicatorLabel.pushTransition(.fromBottom)
-            stateIndicatorLabel.text = VoiceCalculation.processing
+            stateIndicatorLabel.text = Strings.processing
             stateIndicatorLabel.textColor = .black
-            startStopButton.setTitle(VoiceCalculation.listen, for: .normal)
+            startStopButton.setTitle(Strings.listen, for: .normal)
             startStopButton.isEnabled = true
             isListening = false
         } else {
             voiceCalculation.startRecognition()
             stateIndicatorLabel.pushTransition(.fromBottom)
-            stateIndicatorLabel.text = VoiceCalculation.listening
+            stateIndicatorLabel.text = Strings.listening
             stateIndicatorLabel.textColor = .listening
-            startStopButton.setTitle(VoiceCalculation.stop, for: .normal)
+            startStopButton.setTitle(Strings.stop, for: .normal)
             startStopButton.isEnabled = true
             isListening = true
         }
@@ -49,10 +49,10 @@ class VoiceCalculationViewController: UIViewController {
         switch availability {
         case .available:
             startStopButton.isEnabled = true
-            startStopButton.setTitle(VoiceCalculation.listen, for: .normal)
+            startStopButton.setTitle(Strings.listen, for: .normal)
         case .notAvailable:
             startStopButton.isEnabled = false
-            startStopButton.setTitle(VoiceCalculation.unavailable, for: .disabled)
+            startStopButton.setTitle(Strings.unavailable, for: .disabled)
         }
     }
     
@@ -76,7 +76,7 @@ extension VoiceCalculationViewController : VoiceCalculationDelegate {
     func voiceCalculation(_ voiceCalculation: VoiceCalculation, didRecognize expression: String) {
         print(#function)
         stateIndicatorLabel.pushTransition(.fromBottom)
-        stateIndicatorLabel.text = VoiceCalculation.empty
+        stateIndicatorLabel.text = Strings.empty
         stateIndicatorLabel.textColor = .black
         
         expressionLabel.pushTransition(.fromBottom)
@@ -92,48 +92,19 @@ extension VoiceCalculationViewController : VoiceCalculationDelegate {
     
 }
 
-fileprivate extension VoiceCalculation {
+extension VoiceCalculationViewController {
     
-    static let listen = "Listen"
-    static let stop = "Stop"
-    static let unavailable = "Unavailable"
-    
-    static let listening = "Listening..."
-    static let processing = "Processing..."
-    
-    static let empty = " "
-    
-}
-
-extension UIView {
-    
-    enum TransitionPushDirection {
-        case fromBottom
-        case fromLeft
-        case fromRight
-        case fromTop
+    fileprivate enum Strings {
         
-        var coreAnimationConstant: String {
-            switch self {
-            case .fromBottom:
-                return kCATransitionFromBottom
-            case .fromTop:
-                return kCATransitionFromTop
-            case .fromLeft:
-                return kCATransitionFromLeft
-            case .fromRight:
-                return kCATransitionFromRight
-            }
-        }
-    }
-    
-    func pushTransition(_ direction: TransitionPushDirection, duration: TimeInterval = 0.2) {
-        let transition = CATransition()
-        transition.duration = duration
-        transition.type = kCATransitionPush
-        transition.subtype = direction.coreAnimationConstant
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        layer.add(transition, forKey: nil)
+        static let listen = "Listen"
+        static let stop = "Stop"
+        static let unavailable = "Unavailable"
+        
+        static let listening = "Listening..."
+        static let processing = "Processing..."
+        
+        static let empty = " "
+        
     }
     
 }

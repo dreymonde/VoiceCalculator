@@ -11,6 +11,7 @@
 		7C3DCCA81F2F556600C096FF /* VoiceSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */; };
 		7C3DCCAB1F2F66C900C096FF /* SpeechRecognitionSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCAA1F2F66C900C096FF /* SpeechRecognitionSession.swift */; };
 		7C3DCCAD1F2F672500C096FF /* SpeechRecognitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCAC1F2F672500C096FF /* SpeechRecognitionEngine.swift */; };
+		7C3DCCB11F2F779000C096FF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DCCB01F2F779000C096FF /* ViewExtensions.swift */; };
 		7CC3B9A91F2E1AC100409BDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */; };
 		7CC3B9AE1F2E1AC100409BDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AC1F2E1AC100409BDE /* Main.storyboard */; };
 		7CC3B9B01F2E1AC100409BDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceSynthesizer.swift; sourceTree = "<group>"; };
 		7C3DCCAA1F2F66C900C096FF /* SpeechRecognitionSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionSession.swift; sourceTree = "<group>"; };
 		7C3DCCAC1F2F672500C096FF /* SpeechRecognitionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionEngine.swift; sourceTree = "<group>"; };
+		7C3DCCB01F2F779000C096FF /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		7CC3B9A51F2E1AC100409BDE /* Voice Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voice Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CC3B9AD1F2E1AC100409BDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				7C3DCCA51F2F531B00C096FF /* Colors.swift */,
 				7CC3B9C21F2F32C800409BDE /* ThreadSafe.swift */,
+				7C3DCCB01F2F779000C096FF /* ViewExtensions.swift */,
 			);
 			name = Additional;
 			sourceTree = "<group>";
@@ -106,11 +109,11 @@
 				7CC3B9A81F2E1AC100409BDE /* AppDelegate.swift */,
 				7CC3B9C01F2F2EFE00409BDE /* VoiceCalculation.swift */,
 				7C3DCCA71F2F556600C096FF /* VoiceSynthesizer.swift */,
+				7CC3B9C41F2F38D400409BDE /* VoiceCalculationViewController.swift */,
 				7CC3B9AC1F2E1AC100409BDE /* Main.storyboard */,
 				7CC3B9AF1F2E1AC100409BDE /* Assets.xcassets */,
 				7CC3B9B11F2E1AC100409BDE /* LaunchScreen.storyboard */,
 				7CC3B9B41F2E1AC100409BDE /* Info.plist */,
-				7CC3B9C41F2F38D400409BDE /* VoiceCalculationViewController.swift */,
 			);
 			path = "Voice Calculator";
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				7CC3B9BB1F2E1ADA00409BDE /* SpeechRecognition.swift in Sources */,
 				7C3DCCAD1F2F672500C096FF /* SpeechRecognitionEngine.swift in Sources */,
 				7CC3B9C31F2F32C800409BDE /* ThreadSafe.swift in Sources */,
+				7C3DCCB11F2F779000C096FF /* ViewExtensions.swift in Sources */,
 				7CC3B9A91F2E1AC100409BDE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
